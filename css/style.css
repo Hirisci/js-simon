@@ -1,0 +1,133 @@
+/*╔═══════════════╗
+      VARIABILI
+  ╚═══════════════╝*/
+
+ :root{
+    /*- COLORI PRIMARIO -*/
+    --clr-border: black;
+
+    /*- COLORI SECONDARIO -*/
+    --clr-secondary-0: white;
+
+
+
+    /*-COLORI BG -*/
+    --clr-bg-0: rgb(8, 59, 76);
+    --clr-bg-1: rgb(19, 137, 178);
+    --clr-bg-2: rgb(11, 214, 161);
+    --clr-bg-3: rgb(255, 209, 102);
+    --clr-bg-4: rgb(240, 70, 111);
+
+    /*- DIMENSIONI GUTTER*/
+    --gutter-xs: .25rem;
+    --gutter-sm: .5rem;
+    --gutter-md: 1rem;
+    --gutter-lg: 1.5rem;
+    --gutter-xl: 2rem;
+    --gutter-xxl: 3rem;
+
+}
+
+/*╔═══════════════╗
+       COMMON
+  ╚═══════════════╝*/
+
+body{
+    font-family: 'rotobo', sans-serif;
+    color: var(--colore-testo);
+}
+
+/*--- TYPO ---*/
+
+h2{
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+
+/*╔═══════════════╗
+    TAG SEMANTICI
+  ╚═══════════════╝*/
+
+.window{
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+
+.window-game__text-box{
+    text-align: center;
+    position: relative;
+    text-align: center;
+    position: relative;
+    border: 2px solid var(--clr-border);
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+.text-box__number{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    font-size: 5rem;
+}
+
+.text-box__number>div{
+    padding: var(--gutter-md);
+    
+}
+
+
+.text-box__number>input{
+    height: 120px;
+    width: 120px;
+    font-size: 5rem;
+    text-align: center;
+    border: none;
+    
+}
+
+.text-box__info,.text-box__number{
+    height: 20vh;
+    max-width: 1400px;
+}
+
+.text-box__info{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.text-box__timer{
+    position: absolute;
+    font-size: 25px;
+    top: -43px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    padding: .5rem 1rem;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 1rem;
+}
+
+.text-box__button{
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    padding: .5rem 1rem;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 1rem;
+}
+
+
+
+.hide{
+    display: none;
+}
