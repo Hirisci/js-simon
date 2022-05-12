@@ -63,7 +63,7 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 ---------------------------------------------------------------------------------------------*/
 
 
-const btnStart = document.querySelector(".btn-start")
+const btn = document.querySelector(".btn")
 const info = document.querySelector(".text-box__info")
 const number= document.querySelector(".text-box__number")
 const numberInput= document.querySelector(".text-box__number-input")
@@ -72,20 +72,30 @@ const clock = document.querySelector(".text-box__timer")
 let gameTime;
 let coutTime= 5;
 
-btnStart.addEventListener("click",function(){
-    info.classList.add("hide")
-    number.classList.remove("hide")
-    for (let i = 0; i < listNumbers.length; i++) {
-        let div = document.createElement("div")
-        div.innerHTML = listNumbers[i]
-        number.append(div)
-        clock.classList.remove("hide")
-    }
-    gameTime = setInterval(timer,1000)  
-    
-    btnStart.innerHTML = "Skip Time"
-    btnStart.classList.add("btn-skip")
-    btnStart.classList.remove("btn-start")
+btn.addEventListener("click",function(){
+    if(btn.classList.contains("btn-start")){
+
+        info.classList.add("hide")
+        number.classList.remove("hide")
+        for (let i = 0; i < listNumbers.length; i++) {
+            let div = document.createElement("div")
+            div.innerHTML = listNumbers[i]
+            number.append(div)
+            clock.classList.remove("hide")
+        }
+        
+        btnStart.innerHTML = "Skip Time"
+        btnStart.classList.add("btn-skip")
+        btnStart.classList.remove("btn-start")
+        gameTime = setInterval(timer,1000)  
+
+    }else if(btn.classList.contains("btn-skip")){
+        clearInterval(gameTime)
+          number.classList.add("hide")
+          numberInput.classList.remove("hide")
+          clock.classList.add("hide")
+    } 
+   
 })     
 
 
