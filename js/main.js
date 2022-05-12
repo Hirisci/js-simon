@@ -86,6 +86,7 @@ btn.addEventListener("click",function(){
         number.classList.remove("hide")
         for (let i = 0; i < listNumbers.length; i++) {
             let div = document.createElement("div")
+            div.classList.add("circle")
             div.classList.add(`element`)
             div.innerHTML = listNumbers[i]
             number.append(div)
@@ -115,6 +116,7 @@ btn.addEventListener("click",function(){
         number.innerHTML = "";
         for (let i = 0; i < input.length; i++) {  
             let div = document.createElement("div")
+            div.classList.add("circle")
             div.innerHTML = listNumbers[i]
             let k = 0
             console.log(k, listNumbers,input[k].value)
