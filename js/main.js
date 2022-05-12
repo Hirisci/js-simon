@@ -48,6 +48,11 @@ function rndRangeNumber(min, max) {
           number.classList.add("hide")
           numberInput.classList.remove("hide")
           clock.classList.add("hide")
+          number.innerHTML="";
+          btn.innerHTML = "Finito"
+          btn.classList.add("btn-end")
+          btn.classList.remove("btn-skip")
+          
       }
       coutTime--
     }
@@ -67,34 +72,74 @@ const btn = document.querySelector(".btn")
 const info = document.querySelector(".text-box__info")
 const number= document.querySelector(".text-box__number")
 const numberInput= document.querySelector(".text-box__number-input")
-const listNumbers = rndListUnequalNumber(5,1,100)
+
 const clock = document.querySelector(".text-box__timer")
 let gameTime;
 let coutTime= 5;
+let listNumbers= [];
 
 btn.addEventListener("click",function(){
     if(btn.classList.contains("btn-start")){
-
+        number.innerHTML=""
+        listNumbers = rndListUnequalNumber(5,1,99)
         info.classList.add("hide")
         number.classList.remove("hide")
         for (let i = 0; i < listNumbers.length; i++) {
             let div = document.createElement("div")
+            div.classList.add(`element`)
             div.innerHTML = listNumbers[i]
             number.append(div)
             clock.classList.remove("hide")
         }
-        
-        btnStart.innerHTML = "Skip Time"
-        btnStart.classList.add("btn-skip")
-        btnStart.classList.remove("btn-start")
-        gameTime = setInterval(timer,1000)  
+        btn.innerHTML = "Skip Time"
+        btn.classList.add("btn-skip")
+        btn.classList.remove("btn-start")
+        gameTime = setInterval(timer,1000)
+        coutTime = 5;  
 
     }else if(btn.classList.contains("btn-skip")){
         clearInterval(gameTime)
-          number.classList.add("hide")
-          numberInput.classList.remove("hide")
-          clock.classList.add("hide")
-    } 
+        number.classList.add("hide")
+        numberInput.classList.remove("hide")
+        clock.classList.add("hide")
+        btn.innerHTML = "Finito"
+        btn.classList.add("btn-end")
+        btn.classList.remove("btn-skip")
+
+    } else if(btn.classList.contains("btn-end")){
+        numberInput.classList.add("hide")
+        number.classList.remove("hide")
+        const input = document.querySelectorAll(".test")
+        console.log("===================================================")
+        
+        number.innerHTML = "";
+        for (let i = 0; i < input.length; i++) {  
+            let div = document.createElement("div")
+            div.innerHTML = listNumbers[i]
+            let k = 0
+            console.log(k, listNumbers,input[k].value)
+            sum = Number(input[k].value)
+            while(listNumbers[i]!==sum && k < listNumbers.length ){
+                sum = Number(input[k].value)
+                if(listNumbers[i]===sum){
+                    div.classList.add("circle--green")
+                }
+                console.log(listNumbers[i]===sum, listNumbers[i] ,sum)
+                k += 1            
+            }
+
+            if(!div.classList.contains("circle--green")){
+                div.classList.add("circle--red")
+            }
+               
+            
+            
+            number.append(div)
+        }
+        btn.classList.remove('btn-end')
+        btn.classList.add("btn-start")   
+        btn.innerHTML = "Rigioca"
+    }
    
 })     
 
