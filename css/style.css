@@ -80,12 +80,14 @@ h2{
 }
 
 
-.text-box__number>input{
+.text-box__number-input>input{
     height: 120px;
     width: 120px;
     font-size: 5rem;
     text-align: center;
     border: none;
+    margin: var(--gutter-md);
+    
     
 }
 

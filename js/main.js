@@ -42,7 +42,14 @@ function rndRangeNumber(min, max) {
   }
   
   function timer(){
-      
+      clock.innerHTML = coutTime;
+      if(coutTime===-1){
+          clearInterval(gameTime)
+          number.classList.add("hide")
+          numberInput.classList.remove("hide")
+          clock.classList.add("hide")
+      }
+      coutTime--
     }
 
   
@@ -57,11 +64,32 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 
 
 const btnStart = document.querySelector(".btn-start")
-
+const info = document.querySelector(".text-box__info")
+const number= document.querySelector(".text-box__number")
+const numberInput= document.querySelector(".text-box__number-input")
 const listNumbers = rndListUnequalNumber(5,1,100)
+const clock = document.querySelector(".text-box__timer")
+let gameTime;
+let coutTime= 5;
+
+btnStart.addEventListener("click",function(){
+    info.classList.add("hide")
+    number.classList.remove("hide")
+    for (let i = 0; i < listNumbers.length; i++) {
+        let div = document.createElement("div")
+        div.innerHTML = listNumbers[i]
+        number.append(div)
+        clock.classList.remove("hide")
+    }
+    gameTime = setInterval(timer,1000)  
+    
+    btnStart.innerHTML = "Skip Time"
+    btnStart.classList.add("btn-skip")
+    btnStart.classList.remove("btn-start")
+})     
 
 
 
 
-setInterval(timer, 1000);
+
 
